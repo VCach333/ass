@@ -6,16 +6,16 @@
     "agendamento",
     "serviço"
   ],
-  "homepage": "https://github.com/AlberNgoma/ass#readme",
+  "homepage": "https://github.com/VCach333/ass#readme",
   "bugs": {
-    "url": "https://github.com/AlberNgoma/ass/issues"
+    "url": "https://github.com/VCach333/ass/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlberNgoma/ass.git"
+    "url": "git+https://github.com/VCach333/ass.git"
   },
   "license": "ISC",
-  "author": "AlberNgoma",
+  "author": "VCach333",
   "type": "module",
   "main": "app.js",
   "scripts": {
