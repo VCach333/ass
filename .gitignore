@@ -1,3 +1,4 @@
 node_modules/
 public/boxicons/
 public/bulma/
+.env

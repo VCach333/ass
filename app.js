@@ -8,6 +8,7 @@ import mongoose from 'mongoose'
 import passport from 'passport'
 import session from 'express-session'
 import flash from 'connect-flash'
+import dotenv from 'dotenv'
 
 /* app config */
 const app = express();
@@ -38,6 +39,9 @@ app.set('view engine', 'hbs')
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+/* dotenv */
+dotenv.config()
+
 /* statics files */
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -46,7 +50,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 /* mongoose config */
-mongoose.connect('mongodb://localhost/ass').then(async () => {
+const MongoURI = proccess.env.PORT ? process.env.MONGO_URI_CLOUD : process.env.MONGO_URI_LOCAL
+mongoose.connect(MongoURI).then(async () => {
 
     console.log('MongoDB connected')
     await createAdminIfNotExist()
@@ -101,6 +106,7 @@ app.use('/secretaria', secretariaServicesRoutes)
 app.use('/estudante', estudanteScheduleRoutes)
 
 /* server listen */
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3024
+app.listen(PORT, () => {
     console.log("Server Fly - localhost:3000")
 })
