@@ -50,7 +50,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 /* mongoose config */
-const MongoURI = proccess.env.PORT ? process.env.MONGO_URI_CLOUD : process.env.MONGO_URI_LOCAL
+const MongoURI = process.env.PORT ? process.env.MONGO_URI_CLOUD : process.env.MONGO_URI_LOCAL
 mongoose.connect(MongoURI).then(async () => {
 
     console.log('MongoDB connected')
