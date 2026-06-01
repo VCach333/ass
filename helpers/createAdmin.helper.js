@@ -16,7 +16,7 @@ async function createAdminIfNotExist() {
                 role: 'Administrador',
             }
 
-            const pwdHash = await bcrypt.hash('112358', 10)
+            const pwdHash = await bcrypt.hash(process.env.ADMIN_PWD, 10)
 
             adminData.pwd = pwdHash
 
