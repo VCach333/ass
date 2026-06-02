@@ -12,7 +12,7 @@ const ScheduleSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Service'
     },
-    day: {
+    year: {
         type: Number,
         required: true
     },
@@ -20,8 +20,12 @@ const ScheduleSchema = new Schema({
         type: Number,
         required: true
     },
-    year: {
+    day: {
         type: Number,
+        required: true
+    },
+    hour: {
+        type: String,
         required: true
     },
     create: {

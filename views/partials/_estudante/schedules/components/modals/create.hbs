@@ -1,0 +1,76 @@
+<div class="modal" id="schedule-create--modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Agendar</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+
+        <section class="modal-card-body">
+            <form action="/estudante/schedules/create" method="post" id="schedule-create--form">
+
+                <div class="columns is-mobile is-multiline">
+
+                    <div class="column is-12-mobile is-6-tablet">
+                        <label for="createScheduleService" class="label">Serviço</label>
+                        <div class="select is-fullwidth">
+                            <select name="createScheduleService" id="createScheduleService">
+                                <option selected disabled>Escolha</option>
+                                {{#each services}}
+                                <option value="{{_id}}">{{title}}</option>
+                                {{else}}
+                                <option selected disabled>Sem Serviços</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="column is-12-mobile is-6-tablet">
+                        <label for="createScheduleMonth" class="label">Mês</label>
+                        <div class="select is-fullwidth">
+                            <select name="createScheduleMonth" id="createScheduleMonth">
+                                <option value="6" selected>Junho</option>
+                                <option value="7">Julho</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="column is-6-mobile is-3-tablet">
+                        <label for="createScheduleDay" class="label">Dia</label>
+                        <div class="select is-fullwidth">
+                            <select name="createScheduleDay" id="createScheduleDay">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="column is-6-mobile is-3-tablet">
+                        <label for="createScheduleHour" class="label">Hora</label>
+                        <div class="select is-fullwidth">
+                            <select name="createScheduleHour" id="createScheduleHour">
+                                <option value="08:00" selected>08:00</option>
+                                <option value="08:10">08:10</option>
+                                <option value="08:20">08:20</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+        </section>
+
+        <footer class="modal-card-foot">
+            <div class="buttons w-100 is-flex is-justify-content-space-between">
+                <button class="button">Cancelar</button>
+                <button type="submit" form="schedule-create--form" class="button is-primary">Agendar</button>
+            </div>
+        </footer>
+    </div>
+</div>

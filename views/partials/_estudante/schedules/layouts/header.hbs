@@ -6,14 +6,14 @@
             {{#if (or (eq user.role 'Administrador') (eq user.role 'Secretária'))}}
             Gestão de
             {{else}}
-            Minhas
+            <span class="is-hidden-mobile">Minhas</span>
             {{/if}}
             Marcações
         </span>
     </h1>
 
     {{#if (eq user.role 'Estudante')}}
-    <button class="button is-primary js-modal-trigger" data-target="service-create--modal">Marcar</button>
+    <button class="button is-primary js-modal-trigger" data-target="schedule-create--modal">Marcar</button>
     {{/if}}
 </div>
 <hr>

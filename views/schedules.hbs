@@ -23,3 +23,67 @@
     </div>
 
 </section>
+
+<script defer src="/js/components/modal.module.js"></script>
+
+
+<script>
+
+    const monthCurrentContent = document.querySelector('#month-current--content')
+    const today = new Date()
+
+    const month = {
+        number: today.getMonth() + 1,
+        name: today.toLocaleString('pt-PT', { month: 'long' }),
+        days: new Date(
+            today.getFullYear(),
+            today.getMonth() + 1,
+            0
+        ).getDate(),
+        currentDay: today.getDay()
+    }
+
+    /* set #month-current--title */
+    const monthCurrentTitle = document.querySelector('h5#month-current--title')
+    monthCurrentTitle.innerText = month.name.toUpperCase()
+
+    //alert(`Mês: ${month.name} (${month.number}) com ${month.days} dias`)
+    //console.log(month)
+
+    monthCurrentContent.innerHTML = ''
+    for (let cont = 1; cont <= month.days; cont++) {
+
+        monthCurrentContent.innerHTML += `
+            <div class="column is-6-mobile is-2-tablet">
+                <div class="box week-day--content opac-5">
+                    ${cont}
+                </div>
+            </div>
+        `
+    }
+
+    const weeDayContent = document.querySelectorAll('.week-day--content')
+
+    for (let cont = month.currentDay; cont < month.days; cont++) {
+
+        weeDayContent[cont].classList.add('is-clickable')
+        weeDayContent[cont].classList.remove('opac-5')
+    }
+
+    weeDayContent[0].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
+    weeDayContent[6].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
+
+    weeDayContent[7].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
+    weeDayContent[13].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
+
+
+    weeDayContent[14].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
+    weeDayContent[20].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
+
+    weeDayContent[21].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
+    weeDayContent[27].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
+
+    weeDayContent[28].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
+
+
+</script>
