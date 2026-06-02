@@ -108,5 +108,5 @@ app.use('/estudante', estudanteScheduleRoutes)
 /* server listen */
 const PORT = process.env.PORT || 3024
 app.listen(PORT, () => {
-    console.log("Server Fly - localhost:3000")
+    console.log(`Server Fly - localhost:${PORT}`)
 })
