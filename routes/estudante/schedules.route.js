@@ -9,5 +9,6 @@ import * as ScheduleControllers from '../../controllers/estudante/schedules.cont
 
 /* schedule routes */
 router.get('/schedules/read', ScheduleControllers.readSchedules)
+router.post('/schedules/create', ScheduleControllers.createSchedule)
 
 export default router

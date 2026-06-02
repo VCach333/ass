@@ -10,3 +10,12 @@ export const read = () => {
         .lean()
         .catch(err => console.log(err))
 }
+
+export const create = (data) => {
+
+    return new Schedule(data).save().then(() => {
+
+        console.log('Marcação Cadastrada')
+        
+    }).catch(err => console.log(err))
+}

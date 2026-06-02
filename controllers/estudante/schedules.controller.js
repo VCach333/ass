@@ -24,3 +24,27 @@ export const readSchedules = (req, res) => {
         res.redirect('/user/profile')
     })
 }
+
+export const createSchedule = (req, res) => {
+
+    const data = {
+        student: req.user._id,
+        service: req.body.createScheduleService,
+        year: new Date().getFullYear(),
+        month: req.body.createScheduleMonth,
+        day: req.body.createScheduleDay,
+        hour: req.body.createScheduleHour
+    }
+
+    ScheduleServices.create(data).then(() => {
+
+        // waiting flash msg
+        res.redirect('/estudante/schedules/read')
+
+    }).catch(err => {
+
+        console.log('Erro Interno: ' + err)
+        // waiting flash msg
+        res.redirect('/estudante/schedules/read')
+    })
+}

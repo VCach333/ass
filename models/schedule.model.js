@@ -25,7 +25,7 @@ const ScheduleSchema = new Schema({
         required: true
     },
     hour: {
-        type: String,
+        type: Number,
         required: true
     },
     create: {
