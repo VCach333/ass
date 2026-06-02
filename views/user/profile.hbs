@@ -26,12 +26,19 @@
             </section>
             {{/if}}
             {{#if (eq user.role 'Estudante')}}
-            <section id="dashboard-estudante" class="container">
-                <div class="box has-background-info-90">
-                    {{>_estudante/dashboard}}
-                </div>
-            </section>
+            <div class="is-flex is-flex-direction-column is-gap-6">
+                <section id="dashboard-estudante" class="container">
+                    <div class="box has-background-info-90">
+                        {{>_estudante/dashboard}}
+                    </div>
+                </section>
 
+                <section id="schedules-estudante" class="container">
+                    <div class="box has-background-link-90">
+                        {{>_estudante/schedules/components/cards/schedule}}
+                    </div>
+                </section>
+            </div>
             {{/if}}
             {{#if (eq user.role 'Usuário')}}
             {{>_user/profile/layouts/info}}

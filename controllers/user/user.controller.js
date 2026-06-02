@@ -2,6 +2,9 @@
 import passport from 'passport'
 //import bcrypt from 'bcryptjs'
 
+/* services import */
+import * as AppServices from '../../services/app/app.services.js'
+
 /* controllers */
 export const showSign = (req, res) => {
 
@@ -36,5 +39,14 @@ export const signout = (req, res) => {
 
 export const profile = (req, res) => {
 
-    res.render('user/profile')
+    AppServices.read().then(services => {
+
+        res.render('user/profile', {services})
+
+    }).catch(err => {
+        console.log('Erro Interno: ' + err)
+        // waitinhg flash msg
+        res.redirect('/')
+    })
+
 }
