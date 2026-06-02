@@ -32,6 +32,7 @@
     const monthCurrentContent = document.querySelector('#month-current--content')
     const today = new Date()
 
+    /* get current month data */
     const month = {
         number: today.getMonth() + 1,
         name: today.toLocaleString('pt-PT', { month: 'long' }),
@@ -47,10 +48,10 @@
     const monthCurrentTitle = document.querySelector('h5#month-current--title')
     monthCurrentTitle.innerText = month.name.toUpperCase()
 
-    //alert(`Mês: ${month.name} (${month.number}) com ${month.days} dias`)
-    //console.log(month)
-
+    /* clean #month-current--content */
     monthCurrentContent.innerHTML = ''
+
+    /* insert days of month into #month-current--content */
     for (let cont = 1; cont <= month.days; cont++) {
 
         monthCurrentContent.innerHTML += `
@@ -62,6 +63,7 @@
         `
     }
 
+    /* disable yestday into #month-current--content */
     const weeDayContent = document.querySelectorAll('.week-day--content')
 
     for (let cont = month.currentDay; cont < month.days; cont++) {
@@ -70,6 +72,7 @@
         weeDayContent[cont].classList.remove('opac-5')
     }
 
+    /* organize each .week-day--content */
     weeDayContent[0].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
     weeDayContent[6].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
 
@@ -85,5 +88,21 @@
 
     weeDayContent[28].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
 
+    /* get select#createScheduleDay */
+    const createScheduleDay = document.querySelector('select#createScheduleDay')
+
+    /* clean select#createScheduleDay */
+    createScheduleDay.innerHTML = ''
+
+    /* insert a option selected select#createScheduleDay */
+    createScheduleDay.innerHTML = '<option selected disabled>Escolha</option>'
+
+    /* insert day in select#createScheduleDay */
+    for (let cont = month.currentDay; cont < month.days; cont++) {
+        
+        createScheduleDay.innerHTML += `
+            <option value="${cont+1}">${cont+1}</option>
+        `
+    }
 
 </script>
