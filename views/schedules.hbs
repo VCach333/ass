@@ -89,19 +89,37 @@
     weeDayContent[28].parentElement.classList.replace('is-2-tablet', 'is-1-tablet')
 
     /* get select#createScheduleDay */
-    const createScheduleDay = document.querySelector('select#createScheduleDay')
+    const selectCreateScheduleDay = document.querySelector('select#createScheduleDay')
 
     /* clean select#createScheduleDay */
-    createScheduleDay.innerHTML = ''
+    selectCreateScheduleDay.innerHTML = ''
 
     /* insert a option selected select#createScheduleDay */
-    createScheduleDay.innerHTML = '<option selected disabled>Escolha</option>'
+    //selectCreateScheduleDay.innerHTML = '<option selected disabled>Escolha</option>'
 
     /* insert day in select#createScheduleDay */
     for (let cont = month.currentDay; cont < month.days; cont++) {
-        
-        createScheduleDay.innerHTML += `
-            <option value="${cont+1}">${cont+1}</option>
+
+        selectCreateScheduleDay.innerHTML += `
+            <option value="${cont + 1}">${cont + 1}</option>
+        `
+    }
+
+    /* get select#createScheduleHour */
+    const selectCreateScheduleHour = document.querySelector('select#createScheduleHour')
+    
+    /* clean select#createScheduleHour */
+    selectCreateScheduleHour.innerHTML = ''
+
+    /* insert a option selected select#createScheduleHour */
+    //selectCreateScheduleHour.innerHTML = '<option selected disabled>Escolha</option>'
+
+    /* insert hours in select#createScheduleHour */
+    for(let cont = 8; cont < 16; cont++) {
+
+        selectCreateScheduleHour.innerHTML += `
+
+            <option value="${cont}">${cont}:00 - ${cont}:59</option>
         `
     }
 
