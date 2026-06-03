@@ -37,7 +37,7 @@ export default function(passport) {
 
                         return done(null, user)
                         
-                    } else { console.log('senha errada'); return done(null, false, {message: 'Senha Errada'}) }
+                    } else { console.log('Senha Errada'); return done(null, false, {message: 'Senha Errada'}) }
                 })
 
             }).catch(err => {

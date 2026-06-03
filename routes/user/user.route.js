@@ -17,6 +17,7 @@ router.post('/sign/out', userControllers.signout)
 router.post('/update', crudControllers.updateUser)
 router.post('/update/photo', crudControllers.updatePhotoUser)
 router.post('/update/role', crudControllers.updateRoleUser)
+router.post('/update/pwd', crudControllers.updatePwdUser)
 
 router.get('/profile', userControllers.profile)
 

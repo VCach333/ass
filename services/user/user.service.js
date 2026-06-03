@@ -50,3 +50,17 @@ export const updateRole = (id) => {
 
     }).catch(err => console.log(err))
 }
+
+export const updatePwd = (id, pwd) => {
+
+    return User.findByIdAndUpdate(
+        
+        {_id: id},
+        {$set: {pwd: pwd}}
+
+    ).then(() => {
+
+        console.log('Senha Atualizada')
+
+    }).catch(err => console.log(err))
+}
