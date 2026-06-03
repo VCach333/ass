@@ -1,0 +1,66 @@
+<div class="modal" id="user-update--modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Atualizar Dados</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+
+        <section class="modal-card-body">
+            <form action="/user/update" method="post" id="user-update--form">
+
+                <div class="columns is-multiline">
+
+                    <div class="column is-12">
+                        <div class="field">
+                            <label class="label">Nome</label>
+                            <div class="control">
+                                <input name="updatePwdOld" id="updatePwdOld" class="input" type="text" placeholder="ex.: Anair Baptista" value="{{user.name}}" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-12">
+                        <div class="field">
+                            <label class="label">Telefone</label>
+                            <div class="control">
+                                <input name="updatePwdOld" id="updatePwdOld" class="input" type="tel" placeholder="ex.: 933132559" value="{{user.tel}}" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-12">
+                        <div class="field">
+                            <label class="label">Bilhete de Identidade</label>
+                            <div class="control">
+                                <input name="updatePwdOld" id="updatePwdOld" class="input" type="text" placeholder="ex.: 006923496BE044" value="{{user.bi}}" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-12">
+                        <div class="field">
+                            <label class="label">Senha</label>
+                            <div class="control">
+                                <input name="updatePwdOld" id="updatePwdOld" class="input" type="password" >
+                            </div>
+                            <span class="is-size-6 has-text-warning is-flex is-align-items-center is-gap-1">
+                                <i class="bx bx-info-circle"></i>
+                                Confirme sua Credencial. Isto não será Atualizado
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+        </section>
+
+        <footer class="modal-card-foot">
+            <div class="buttons w-100 is-flex is-justify-content-space-between">
+                <button class="button">Cancelar</button>
+                <button type="submit" form="user-update--form" class="button is-primary">Atualizar</button>
+            </div>
+        </footer>
+    </div>
+</div>

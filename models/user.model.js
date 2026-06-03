@@ -12,6 +12,9 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    bi: {
+        type: String
+    },
     pwd: {
         type: String,
         required: true
