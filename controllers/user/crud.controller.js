@@ -36,21 +36,60 @@ export const createUser = (req, res) => {
 export const updateUser = (req, res) => {
 
     const data = {
-        name: req.body.updateUserName,
-        tel: req.body.updateUserTel
+        pwdCurrent: req.body.updatePwd,
+        name: req.body.updateName,
+        tel: req.body.updateTel,
+        bi: req.body.updateBI
         // waiting other fields
     }
 
-    UserServices.update(req.user._id, data).then(() => {
+    // validation
+    if (
+        !data.pwdCurrent || data.pwdCurrent == undefined || data.pwdCurrent == null
+        ||
+        !data.name || data.name == undefined || data.name == null
+        ||
+        !data.tel || data.tel == undefined || data.tel == null
+        ||
+        !data.bi || data.bi == undefined || data.bi == null
+    ) {
 
         // waiting flash msg
-        res.redirect('/user/profile')
+        console.log('Preencha todos os Campos')
+        return res.redirect('/user/profile')
 
-    }).catch(err => {
+    } else {
 
-        console.log('Erro Interno: ' + err)
-        res.redirect('/user/profile')
-    })
+        bcrypt.compare(data.pwdCurrent, req.user.pwd, (err, match) => {
+
+            if (err) {
+                // waiting flash msg
+                console.log('Erro Interno: ' + err)
+                return res.redirect('/user/profile')
+            }
+
+            if (match) {
+
+                UserServices.update(req.user._id, data).then(() => {
+
+                    // waiting flash msg
+                    res.redirect('/user/profile')
+
+                }).catch(err => {
+
+                    // waiting flash msg
+                    console.log('Erro Interno: ' + err)
+                    res.redirect('/user/profile')
+                })
+
+            } else {
+
+                // waiting flash msg
+                console.log('Senha Incorreta')
+                res.redirect('/user/profile')
+            }
+        })
+    }
 }
 
 export const updatePhotoUser = (req, res) => {

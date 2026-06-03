@@ -13,7 +13,7 @@ export const create = (data) => {
 
 export const update = (id, data) => {
 
-    User.findByIdAndUpdate(
+    return User.findByIdAndUpdate(
 
         { _id: id },
         { $set: data }
