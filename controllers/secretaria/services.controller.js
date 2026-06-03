@@ -6,13 +6,12 @@ export const readServices = (req, res) => {
 
     servicesService.read().then((services) => {
 
-        // waiting flash msg
         res.render('services', { services })
 
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect('/user/profile')
     })
 }
@@ -28,13 +27,13 @@ export const createService = (req, res) => {
 
     servicesService.create(data).then(() => {
 
-        // waiting flash msg
+        req.flash('success_msg', 'Serviço Cadastrado')
         res.redirect('/secretaria/services/read')
 
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect('/secretaria/services/read')
     })
 }
@@ -43,13 +42,13 @@ export const deleteService = (req, res) => {
 
     servicesService.delet(req.params.id).then(() => {
 
-        // waiting flash msg
+        req.flash('success_msg', 'Serviço Deletado')
         res.redirect('/secretaria/services/read')
 
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect('/secretaria/services/read')
     })
 }
@@ -60,13 +59,13 @@ export const updateStatusService = (req, res) => {
 
     servicesService.updateStatus(id, status).then(() => {
 
-        // waiting flash msg
+        req.flash('info_msg', 'Serviço Arquivado')
         res.redirect('/secretaria/services/read')
 
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect('/secretaria/services/read')
     })
 }

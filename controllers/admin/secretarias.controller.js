@@ -20,13 +20,13 @@ export const createSecretaria = (req, res) => {
 
         SecretariaManagerServices.create(data).then(() => {
 
-            // waiting msg
+            req.flash('success_msg', 'Secretária Cadastrada')
             res.redirect('/admin/users/read/Secretária')
 
         }).catch(err => {
 
             console.log('Erro Interno: ' + err)
-            // waiting msg
+            req.flash('error_msg', 'Erro Interno')
             res.redirect('/admin/users/read/Secretária')
         })
     })

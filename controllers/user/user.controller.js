@@ -27,11 +27,12 @@ export const signout = (req, res) => {
         if(err) {
 
             console.log('Erro Interno: ' + err)
+            req.flash('error_msg', 'Erro Interno')
             res.redirect('/user/profile')
-
+            
         } else {
-
-            // waiting flash msg
+            
+            req.flash('info_msg', 'Conta Fechada')
             res.redirect('/user/sign?action=in')
         }
     })
@@ -44,8 +45,9 @@ export const profile = (req, res) => {
         res.render('user/profile', {services})
 
     }).catch(err => {
+
         console.log('Erro Interno: ' + err)
-        // waitinhg flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect('/')
     })
 

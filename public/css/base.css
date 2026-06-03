@@ -1,5 +1,6 @@
 /* utils */
 @import 'media_query.css';
+@import 'snackbar.css';
 
 /* views */
 @import 'sign.css';

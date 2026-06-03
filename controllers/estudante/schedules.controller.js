@@ -8,19 +8,18 @@ export const readSchedules = (req, res) => {
     ScheduleServices.read().then(schedules => {
         ServiceServices.read().then(services => {
 
-            // waiting flash msg
             res.render('schedules', { schedules, services })
 
         }).catch(err => {
 
             console.log('Erro Interno: ' + err)
-            // waiting flash msg
+            req.flash('error_msg', 'Erro Interno')
             res.redirect('/user/profile')
         })
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect('/user/profile')
     })
 }
@@ -38,13 +37,13 @@ export const createSchedule = (req, res) => {
 
     ScheduleServices.create(data).then(() => {
 
-        // waiting flash msg
+        req.flash('success_msg', 'Marcação Cadastrada')
         res.redirect('/estudante/schedules/read')
 
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect('/estudante/schedules/read')
     })
 }

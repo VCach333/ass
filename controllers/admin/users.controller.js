@@ -8,14 +8,12 @@ export const readUsers = (req, res) => {
 
     UsersManagerServices.read(role).then((users) => {
 
-        // waiting flash msg
-        // waiting render view w/ users data
         res.render('admin/users', { users, role })
 
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect(`/admin/users#users-content--${role}`)
     })
 }
@@ -26,13 +24,14 @@ export const blockUser = (req, res) => {
 
     UsersManagerServices.block(id).then(() => {
 
-        // waiting flash msg
+
+        req.flash('info_msg', 'Usuário Bloqueado') /* use role */
         res.redirect(`/admin/users#user-content--${id}`)
 
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect(`/admin/users#user-content--${id}`)
     })
 }
@@ -43,13 +42,13 @@ export const unblockUser = (req, res) => {
 
     UsersManagerServices.unblock(id).then(() => {
 
-        // waiting flash msg
+        req.flash('info_msg', 'Usuário Desbloqueado')
         res.redirect(`/admin/users#user-content--${id}`)
 
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect(`/admin/users#user-content--${id}`)
     })
 }
@@ -65,19 +64,19 @@ export const updateRoleUser = (req, res) => {
 
         UsersManagerServices.updateRole(id, role).then(() => {
 
-            // waiting flash msg
+            req.flash('info_msg', 'Privilégio Atualizado')
             res.redirect(`/admin/users#user-content--${id}`)
 
         }).catch(err => {
 
             console.log('Erro interno: ' + err)
-            // waiting flash msg
+            req.flash('error_msg', 'Erro Interno')
             res.redirect(`/admin/users#user-content--${id}`)
         })
 
     } else {
 
-        // waiting flash msg 'Role não Prevista'
+        req.flash('error_msg', 'Privilégio Incorreto')
         res.redirect(`/admin/users#user-content--${id}`)
     }
 }
@@ -89,13 +88,13 @@ export const deleteUser = (req, res) => {
 
     UsersManagerServices.delet(id).then(() => {
 
-        // waiting flash msg
+        req.flash('success_msg', 'Usuário Deletado') /* use role */
         res.redirect(`/admin/users/read/${role}`)
 
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect(`/admin/users/read/${role}`)
     })
 }

@@ -12,7 +12,7 @@ export const readServices = (req, res) => {
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect('/')
     })
 }

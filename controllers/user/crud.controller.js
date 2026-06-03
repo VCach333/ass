@@ -22,12 +22,13 @@ export const createUser = (req, res) => {
 
         UserServices.create(data).then(() => {
 
-            // waiting flash msg
+            req.flash('success_msg', 'Conta Criada')
             res.redirect('/user/sign?action=in')
 
         }).catch(err => {
 
             console.log('Erro Interno: ' + err)
+            req.flash('error_msg', 'Erro Interno')
             res.redirect('/user/sign?action=up')
         })
     })
@@ -54,8 +55,8 @@ export const updateUser = (req, res) => {
         !data.bi || data.bi == undefined || data.bi == null
     ) {
 
-        // waiting flash msg
         console.log('Preencha todos os Campos')
+        req.flash('success_msg', 'Preencha todos os Campos')
         return res.redirect('/user/profile')
 
     } else {
@@ -63,7 +64,7 @@ export const updateUser = (req, res) => {
         bcrypt.compare(data.pwdCurrent, req.user.pwd, (err, match) => {
 
             if (err) {
-                // waiting flash msg
+                req.flash('error_msg', 'Erro Interno')
                 console.log('Erro Interno: ' + err)
                 return res.redirect('/user/profile')
             }
@@ -72,19 +73,19 @@ export const updateUser = (req, res) => {
 
                 UserServices.update(req.user._id, data).then(() => {
 
-                    // waiting flash msg
+                    req.flash('info_msg', 'Dados Atualizados')
                     res.redirect('/user/profile')
 
                 }).catch(err => {
 
-                    // waiting flash msg
+                    req.flash('error_msg', 'Erro Interno')
                     console.log('Erro Interno: ' + err)
                     res.redirect('/user/profile')
                 })
 
             } else {
 
-                // waiting flash msg
+                req.flash('success_msg', 'Senha Incorreta')
                 console.log('Senha Incorreta')
                 res.redirect('/user/profile')
             }
@@ -98,13 +99,13 @@ export const updatePhotoUser = (req, res) => {
 
     UserServices.updatePhoto(req.user._id, foto).then(() => {
 
-        // waiting flash msg
+        req.flash('info_msg', 'Foto Atualizada')
         res.redirect('/user/profile')
 
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect('/user/profile')
     })
 }
@@ -113,13 +114,13 @@ export const updateRoleUser = (req, res) => {
 
     UserServices.updateRole(req.user._id).then(() => {
 
+        req.flash('info_msg', 'Privilégio Atualizado')
         res.redirect('/user/profile')
-        // waiting flash msg
 
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)
-        // waiting flash msg
+        req.flash('error_msg', 'Erro Interno')
         res.redirect('/user/profile')
     })
 }
@@ -140,7 +141,7 @@ export const updatePwdUser = (req, res) => {
         if (err) {
 
             console.log('Erro Interno: ' + err)
-            // waiting flash msg
+            req.flash('error_msg', 'Erro Interno')
             return res.redirect('/user/profile')
         }
 
@@ -155,36 +156,34 @@ export const updatePwdUser = (req, res) => {
             ) {
 
                 console.log('Preencha todos os Campos')
-                // waiting flash msg
+                req.flash('error_msg', 'Preencha todos os Campos')
                 return res.redirect('/user/profile')
 
             } else if (data.pwdNew == data.pwdOld) {
 
                 console.log('Nova Senha Igual a Atual')
-                // waiting flash msg
+                req.flash('error_msg', 'Nova Senha Igual a Atual')
                 return res.redirect('/user/profile')
 
             } else if (data.pwdNew != data.pwdNewAgain) {
 
-                console.log('Senhas Nova diferentes')
-                // waiting flash msg
+                console.log('Novas Senhas Diferentes')
+                req.flash('error_msg', 'Novas Senhas Diferentes')
                 return res.redirect('/user/profile')
             }
-
+            
             bcrypt.hash(data.pwdNew, 10).then(hash => {
-
-                //data.pwdNew = hash
 
                 // call service
                 UserServices.updatePwd(req.user._id, hash).then(() => {
-
-                    // waiting flash msg
+                    
+                    req.flash('info_msg', 'Senha Atualizada')
                     res.redirect('/user/profile')
-
+                    
                 }).catch(err => {
-
+                    
                     console.log('Erro Interno: ' + err)
-                    // waiting flash msg
+                    req.flash('error_msg', 'Erro Interno')
                     res.redirect('/user/profile')
                 })
             })
@@ -192,9 +191,8 @@ export const updatePwdUser = (req, res) => {
         } else {
 
             console.log('Senha Atual Incorreta')
-            // waiting flash msg
+            req.flash('error_msg', 'Senha Atual Incorreta')
             res.redirect('/user/profile')
         }
-
     })
 }

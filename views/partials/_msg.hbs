@@ -1,0 +1,35 @@
+{{#if info_msg}}
+<div id="snackbar">
+    <div class="content has-background-info has-text-white">
+        {{info_msg}}
+    </div>
+    <div class="progress has-background-info"></div>
+</div>
+{{/if}}
+
+{{#if success_msg}}
+<div id="snackbar">
+    <div class="content has-background-success has-text-white">
+        {{success_msg}}
+    </div>
+    <div class="progress has-background-success"></div>
+</div>
+{{/if}}
+
+{{#if error_msg}}
+<div id="snackbar">
+    <div class="content has-background-danger has-text-white">
+        {{error_msg}}
+    </div>
+    <div class="progress has-background-danger"></div>
+</div>
+{{/if}}
+
+{{#if error}}
+<div id="snackbar">
+    <div class="content has-background-danger has-text-white">
+        {{error}}
+    </div>
+    <div class="progress has-background-danger"></div>
+</div>
+{{/if}}
