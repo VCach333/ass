@@ -19,19 +19,19 @@
     </div>
 
     <footer class="card-footer">
-        <a data-target="user-delete--modal" class="card-footer-item is-flex is-gap-1 js-modal-trigger"
+        <button data-target="user-delete--modal" class="card-footer-item is-flex is-gap-1 js-modal-trigger"
             data-userId="{{_id}}" onclick="userDeleteSetIdAndRole('{{_id}}', '{{role}}')">
             <i class="bx bx-block has-text-danger"></i>
             <span class="has-text-danger-80 has-text-weight-semibold is-size-7">del.</span>
-        </a>
-        <a class="card-footer-item is-flex is-gap-1">
+        </button>
+        <button class="card-footer-item is-flex is-gap-1 opac-5">
             <i class="bx bx-lock-alt has-text-warning"></i>
             <span class="has-text-warning-70 has-text-weight-semibold is-size-7">bloq.</span>
-        </a>
-        <a class="card-footer-item is-flex is-gap-1">
+        </button>
+        <button class="card-footer-item is-flex is-gap-1 opac-5">
             <i class="bx bx-detail has-text-info"></i>
             <span class="has-text-info-80 has-text-weight-semibold is-size-7">info.</span>
-        </a>
+        </button>
     </footer>
 
 </div>
