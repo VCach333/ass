@@ -6,8 +6,62 @@
         <button class="button">
             <i class="bx bx-camera"></i>
         </button>
-        <button class="button">
+        <button class="button js-modal-trigger" data-target="user-update-pwd--modal">
             <i class="bx bx-shield"></i>
         </button>
+    </div>
+</div>
+
+<div class="modal" id="user-update-pwd--modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Atualizar Senha</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+
+        <section class="modal-card-body">
+            <form action="/user/update/pwd" method="post" id="user-update-pwd--form">
+
+                <div class="columns is-multiline">
+
+                    <div class="column is-12">
+                        <div class="field">
+                            <label class="label">Senha Anterior</label>
+                            <div class="control">
+                                <input name="updatePwdOld" id="updatePwdOld" class="input" type="password" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-12-mobile is-6-tablet">
+                        <div class="field">
+                            <label class="label">Senha Nova</label>
+                            <div class="control">
+                                <input name="updatePwdNew" id="updatePwdNew" class="input" type="password" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column is-12-mobile is-6-tablet">
+                        <div class="field">
+                            <label class="label">Confirme a Senha Nova</label>
+                            <div class="control">
+                                <input name="updatePwdNewAgain" id="updatePwdNewAgain" class="input" type="password" >
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+        </section>
+
+        <footer class="modal-card-foot">
+            <div class="buttons w-100 is-flex is-justify-content-space-between">
+                <button class="button">Cancelar</button>
+                <button type="submit" form="user-update-pwd--form" class="button is-primary">Atualizar</button>
+            </div>
+        </footer>
     </div>
 </div>
