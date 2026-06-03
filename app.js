@@ -89,6 +89,7 @@ app.use((req, res, next) => {
 import userRoutes from './routes/user/user.route.js'
 import adminUsersManagementRoutes from './routes/admin/users.route.js'
 import secretariaServicesRoutes from './routes/secretaria/services.route.js'
+import secretariaSchedulesRoutes from './routes/secretaria/schedules.route.js'
 import estudanteScheduleRoutes from './routes/estudante/schedules.route.js'
 
 /* app controllers import */
@@ -103,6 +104,7 @@ app.get('/services', appControllers.readServices)
 app.use('/user', userRoutes)
 app.use('/admin', adminUsersManagementRoutes)
 app.use('/secretaria', secretariaServicesRoutes)
+app.use('/secretaria', secretariaSchedulesRoutes)
 app.use('/estudante', estudanteScheduleRoutes)
 
 /* server listen */
