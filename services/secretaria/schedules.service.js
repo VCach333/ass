@@ -13,16 +13,16 @@ export const read = () => {
         .catch(err => console.log(err))
 }
 
-export const updateStatus = (id, status) => {
+export const updateStatus = (data) => {
 
     return Schedule.findByIdAndUpdate(
 
-        { _id: id },
-        { $set: { status: status } }
+        { _id: data.id },
+        { $set: { status: data.status } }
 
     ).then(() => {
 
-        console.log(`Marcação ${status}`)
+        console.log(`Marcação ${data.status}`)
 
     }).catch(err => console.log(err))
 }

@@ -75,16 +75,23 @@
         </div>
     </div>
 
-    <form
-        id="schedule-update-atendido--form"
-        action="/secretaria/schedules/update/status/{{_id}}/Atendida"
+    <form id="schedule-update-atendido--form" action="/secretaria/schedules/update/status"
         method="post">
+
+        <input type="hidden" name="updateScheduleId" value="{{_id}}">
+        <input type="hidden" name="updateScheduleStatus" value="Atendida">
+        <input type="hidden" name="updateScheduleStudent" value="{{student._id}}">
+        <input type="hidden" name="updateScheduleService" value="{{service._id}}">
+
     </form>
-    <form
-        id="schedule-update-rejeitado--form"
-        action="/secretaria/schedules/update/status/{{_id}}/Rejeitada"
+
+    <form id="schedule-update-rejeitado--form" action="/secretaria/schedules/update/status"
         method="post">
+
+        <input type="hidden" name="updateScheduleId" value="{{_id}}">
+        <input type="hidden" name="updateScheduleStatus" value="Rejeitada">
     </form>
+
     {{else}}
     {{/each}}
 </div>

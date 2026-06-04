@@ -1,5 +1,6 @@
 /* service import */
 import * as ScheduleServices from '../../services/secretaria/schedules.service.js'
+import * as PaymentServices from '../../services/secretaria/payment.service.js'
 
 /* controllers */
 export const readSchedules = (req, res) => {
@@ -18,13 +19,39 @@ export const readSchedules = (req, res) => {
 
 export const updateStatusSchedule = (req, res) => {
 
-    const {id, status} = req.params
+    const { id, status } = req.body
 
-    ScheduleServices.updateStatus(id, status).then(() => {
+    const dataSchedule = {
+        id: req.body.updateScheduleId,
+        status: req.body.updateScheduleStatus
+    }
 
-        req.flash('info_msg', `Marcação ${status}`)
-        res.redirect('/secretaria/schedules/read')
+    const dataPayment = {
+        employer: req.user._id,
+        student: req.body.updateScheduleStudent,
+        service: req.body.updateScheduleService
+    }
 
+    ScheduleServices.updateStatus(dataSchedule).then(() => {
+
+        if (dataSchedule.status == 'Atendida') {
+
+            PaymentServices.create(dataPayment).then(() => {
+
+                req.flash('info_msg', `Marcação ${dataSchedule.status}`)
+                res.redirect('/secretaria/schedules/read')
+
+            }).catch(err => {
+
+                console.log('Erro Interno: ' + err)
+                req.flash('error_msg', 'Erro Interno')
+                res.redirect('/secretaria/schedules/read')
+            })
+
+        } else {
+            req.flash('info_msg', `Marcação ${dataSchedule.status}`)
+            res.redirect('/secretaria/schedules/read')
+        }
     }).catch(err => {
 
         console.log('Erro Interno: ' + err)

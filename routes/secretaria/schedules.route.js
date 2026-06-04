@@ -9,6 +9,6 @@ import * as ScheduleControllers from '../../controllers/secretaria/schedules.con
 
 /* secretaria routes */
 router.get('/schedules/read', ScheduleControllers.readSchedules)
-router.post('/schedules/update/status/:id/:status', ScheduleControllers.updateStatusSchedule)
+router.post('/schedules/update/status', ScheduleControllers.updateStatusSchedule)
 
 export default router
