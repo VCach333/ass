@@ -19,3 +19,7 @@ nav {
 .opac-5 {
     opacity: .5 !important;
 }
+
+.card > footer.card-footer {
+    overflow: hidden !important;
+}

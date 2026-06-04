@@ -28,6 +28,11 @@ const ScheduleSchema = new Schema({
         type: Number,
         required: true
     },
+    status: {
+        type: String,
+        default: 'Pendente',
+        enum: ['Pendente', 'Atendida', 'Rejeitada']
+    },
     create: {
         type: Date,
         default: Date.now

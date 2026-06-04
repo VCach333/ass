@@ -1,1 +1,90 @@
-content for secretaria and admin
+<div class="columns is-multiline">
+    {{#each schedules}}
+    <div class="column is-12-mobile is-6-tabelt is-4-desktop">
+        <div class="card">
+            <div class="card-content">
+                <div class="content">
+                    <div class="is-flex is-flex-direction-column is-align-items-center">
+
+                        <div class="is-flex is-align-items-center">
+                            <figure class="image is-64x64">
+                                <img src="/files/img/users/{{student.photo}}" class="is-rounded">
+                            </figure>
+                        </div>
+
+                        <div class="is-flex is-flex-direction-column is-align-items-center mt-4">
+                            <h5 class="title has-text-grey is-size-5">{{student.name}}</h5>
+                            <p class="subtitle is-size-6 has-text-link mt-1">{{student.tel}}</p>
+                        </div>
+
+                        <div class="is-flex is-justify-content-center mt-6">
+                            <div class="tags has-addons">
+                                <span class="tag has-background-link-95 is-medium">
+                                    <i class="bx bxs-file has-text-link"></i>
+                                </span>
+                                <span
+                                    class="tag is-medium has-background-link-70 has-text-light">{{service.title}}</span>
+                            </div>
+                        </div>
+
+                        <div class="is-flex is-justify-content-center mt-2">
+                            <div class="tags has-addons">
+                                <span class="tag has-background-success-95 is-medium">
+                                    <i class="bx bxs-dollar-circle has-text-success"></i>
+                                </span>
+                                <span
+                                    class="tag is-medium has-background-success-70 has-text-light">{{service.price}}</span>
+                            </div>
+                        </div>
+
+                        <div class="is-flex is-justify-content-center mt-2">
+                            <div class="tags has-addons">
+                                <span class="tag has-background-info-95 is-medium">
+                                    <i class="bx bx-calendar has-text-info"></i>
+                                </span>
+                                <span
+                                    class="tag is-medium has-background-info-70 has-text-light">{{year}}-{{month}}-{{day}}</span>
+                            </div>
+                        </div>
+
+                        <div class="is-flex is-justify-content-center mt-2">
+                            <div class="tags has-addons">
+                                <span class="tag has-background-info-95 is-medium">
+                                    <i class="bx bx-time has-text-info"></i>
+                                </span>
+                                <span class="tag is-medium has-background-info-70 has-text-light">{{hour}}:00 -
+                                    {{hour}}:59</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <footer class="card-footer">
+                <button type="submit" form="schedule-update-rejeitado--form"
+                    class="card-footer-item has-background-danger-90 has-text-danger-60 is-flex is-gap-1">
+                    <i class="bx bx-x"></i>
+                    <span class="is-size-7-mobile">Não Atendido</span>
+                </button>
+                <button type="submit" form="schedule-update-atendido--form"
+                    class="card-footer-item has-background-success-90 has-text-success-40 is-flex is-gap-1">
+                    <i class="bx bxs-dollar-circle"></i>
+                    <span class="is-size-7-mobile">Atendido e Pago</span>
+                </button>
+            </footer>
+        </div>
+    </div>
+
+    <form
+        id="schedule-update-atendido--form"
+        action="/secretaria/schedules/update/status/{{_id}}/Atendida"
+        method="post">
+    </form>
+    <form
+        id="schedule-update-rejeitado--form"
+        action="/secretaria/schedules/update/status/{{_id}}/Rejeitada"
+        method="post">
+    </form>
+    {{else}}
+    {{/each}}
+</div>
